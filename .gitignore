@@ -1,0 +1,76 @@
+unit Unit2;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls;
+
+type
+  meurecord = record
+  nome:string;
+  endereco:string;
+  bairro:string;
+  cidade:string;
+  estado:string;
+  telefone:string;
+  end;
+
+  TForm2 = class(TForm)
+    Edit1: TEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    Edit2: TEdit;
+    Label3: TLabel;
+    Edit3: TEdit;
+    Label4: TLabel;
+    Edit4: TEdit;
+    Label5: TLabel;
+    Edit5: TEdit;
+    Label6: TLabel;
+    Edit6: TEdit;
+    Button1: TButton;
+    Button2: TButton;
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+  pessoa:array of meurecord;
+
+implementation
+
+uses
+  Unit3;
+
+{$R *.dfm}
+
+procedure TForm2.Button1Click(Sender: TObject);
+   begin
+   setlength(pessoa,length(pessoa)+1);
+   pessoa[length(pessoa)-1].nome:=Edit1.Text;
+   edit1.Clear;
+   pessoa[length(pessoa)-1].endereco:=Edit2.Text;
+   edit2.Clear;
+   pessoa[length(pessoa)-1].bairro:=Edit3.Text;
+   edit3.clear;
+   pessoa[length(pessoa)-1].cidade:=Edit4.Text;
+   edit4.Clear;
+   pessoa[length(pessoa)-1].estado:=Edit5.Text;
+   edit5.Clear;
+   pessoa[length(pessoa)-1].telefone:=Edit6.Text;
+   edit6.Clear;
+   end;
+
+procedure TForm2.Button2Click(Sender: TObject);
+   begin
+   Application.createform(Tform3, form3);
+   form3.show;
+   end;
+
+end.
