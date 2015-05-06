@@ -74,3 +74,61 @@ procedure TForm2.Button2Click(Sender: TObject);
    end;
 
 end.
+
+unit Unit3;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls;
+
+type
+  TForm3 = class(TForm)
+    Label1: TLabel;
+    Edit1: TEdit;
+    Button1: TButton;
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form3: TForm3;
+  i:integer;
+
+implementation
+
+uses
+  Unit2;
+
+{$R *.dfm}
+
+procedure TForm3.Button1Click(Sender: TObject);
+begin
+for i:=0 to length(pessoa) - 1 do
+  if Edit1.Text = pessoa[i].nome then
+   begin
+   Form2.edit1.text:=pessoa[i].nome;
+   form2.Edit2.Text:=pessoa[i].endereco;
+   form2.Edit3.Text:=pessoa[i].bairro;
+   form2.Edit4.Text:=pessoa[i].cidade;
+   form2.Edit5.Text:=pessoa[i].estado;
+   form2.Edit6.Text:=pessoa[i].telefone;
+   form3.close;
+   end
+  else
+   begin
+   form3.Close;
+   Form2.edit1.clear;
+   form2.Edit2.clear;
+   form2.Edit3.clear;
+   form2.Edit4.clear;
+   form2.Edit5.clear;
+   form2.Edit6.clear;
+   ShowMessage('nome não encontrado');
+   end;
+  end;
+end.
